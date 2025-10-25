@@ -24,3 +24,15 @@ extra/exe-builder/obj
 
 .vs
 .vscode
+
+# Claude AI settings
+.claude/
+
+# Database files
+*.db
+*.sqlite
+*.sqlite3
+
+# Build artifacts
+*.exe
+*.tar.gz
