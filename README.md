@@ -42,35 +42,48 @@ It is a temporary live demo, all data will be deleted after 10 minutes.
 
 ## 🐳 Docker Image (uptime-kuma-vn)
 
-### 📦 Building and Pushing to Docker Hub
+### 🚀 Automatic Docker Builds
 
-To use the enhanced `uptime-kuma-vn` image, you need to build and push it to Docker Hub:
+This repository includes **automatic Docker image building** using GitHub Actions! The image is automatically built and pushed to Docker Hub whenever you push changes to the master branch.
+
+**Current image**: `hienhoceo-dpsmedia/uptime-kuma-vn:latest`
+
+### 📋 Setup Instructions
+
+To enable automatic builds for your fork:
+
+1. **Create Docker Hub Repository**: See [DOCKER_SETUP.md](DOCKER_SETUP.md) for complete instructions
+2. **Add GitHub Secrets**: Set up `DOCKER_USERNAME` and `DOCKER_PASSWORD` secrets
+3. **Push to Master**: The build will start automatically!
+
+### 🏷️ Available Tags
+
+- `hienhoceo-dpsmedia/uptime-kuma-vn:latest` - Latest version from master branch
+- `hienhoceo-dpsmedia/uptime-kuma-vn:2.0.2` - Version-specific releases
+- Multi-architecture support: AMD64 + ARM64
+
+### 🔧 Manual Build (Optional)
+
+If you prefer to build manually:
 
 ```bash
-# 1. Clone the repository
-git clone https://github.com/hienhoceo-dpsmedia/uptime-kuma-vn.git
-cd uptime-kuma-vn
-
-# 2. Build the Docker image
+# Build the Docker image
 docker build -f docker/dockerfile -t hienhoceo-dpsmedia/uptime-kuma-vn:latest .
 
-# 3. Login to Docker Hub
-docker login
-
-# 4. Push the image to Docker Hub
+# Push to Docker Hub
 docker push hienhoceo-dpsmedia/uptime-kuma-vn:latest
 ```
 
-### 🏷️ Image Tags
+> [!NOTE]
+> For detailed setup instructions, see [DOCKER_SETUP.md](DOCKER_SETUP.md)
 
-- `hienhoceo-dpsmedia/uptime-kuma-vn:latest` - Latest stable version
-- `hienhoceo-dpsmedia/uptime-kuma-vn:2.0.2` - Version-specific tag
+### 🎯 What's Included
 
-### 📋 Prerequisites
-
-- Docker Hub account with repository `hienhoceo-dpsmedia/uptime-kuma-vn`
-- Docker installed on your build machine
-- Sufficient disk space for the build process
+- ✅ All original Uptime Kuma features
+- ✅ **CSV Import** for bulk monitor creation
+- ✅ **Queue Monitor Limit** for performance control
+- ✅ Multi-architecture support (Intel + ARM)
+- ✅ Automatic updates when you push changes
 
 ## 🔧 How to Install
 
