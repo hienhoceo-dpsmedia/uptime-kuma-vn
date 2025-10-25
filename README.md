@@ -34,6 +34,44 @@ It is a temporary live demo, all data will be deleted after 10 minutes.
 - Proxy support
 - 2FA support
 
+### 🚀 Enhanced Features (uptime-kuma-vn)
+
+- **CSV Import**: Bulk import monitors from CSV files
+- **Queue Monitor Limit**: Enhanced queue management with configurable limits
+- **Performance Improvements**: Optimized for better performance and reliability
+
+## 🐳 Docker Image (uptime-kuma-vn)
+
+### 📦 Building and Pushing to Docker Hub
+
+To use the enhanced `uptime-kuma-vn` image, you need to build and push it to Docker Hub:
+
+```bash
+# 1. Clone the repository
+git clone https://github.com/hienhoceo-dpsmedia/uptime-kuma-vn.git
+cd uptime-kuma-vn
+
+# 2. Build the Docker image
+docker build -f docker/dockerfile -t hienhoceo-dpsmedia/uptime-kuma-vn:latest .
+
+# 3. Login to Docker Hub
+docker login
+
+# 4. Push the image to Docker Hub
+docker push hienhoceo-dpsmedia/uptime-kuma-vn:latest
+```
+
+### 🏷️ Image Tags
+
+- `hienhoceo-dpsmedia/uptime-kuma-vn:latest` - Latest stable version
+- `hienhoceo-dpsmedia/uptime-kuma-vn:2.0.2` - Version-specific tag
+
+### 📋 Prerequisites
+
+- Docker Hub account with repository `hienhoceo-dpsmedia/uptime-kuma-vn`
+- Docker installed on your build machine
+- Sufficient disk space for the build process
+
 ## 🔧 How to Install
 
 ### 🐳 Docker Compose
@@ -51,6 +89,9 @@ Uptime Kuma is now running on <http://0.0.0.0:3001>.
 > File Systems like **NFS** (Network File System) are **NOT** supported. Please map to a local directory or volume.
 
 ### 🐳 Docker Command
+
+> [!NOTE]
+> This requires the Docker image to be available on Docker Hub. See the "Docker Image" section above for build instructions.
 
 ```bash
 docker run -d --restart=always -p 3001:3001 -v uptime-kuma:/app/data --name uptime-kuma hienhoceo-dpsmedia/uptime-kuma-vn:latest
@@ -116,7 +157,7 @@ version: '3.8'
 
 services:
   uptime-kuma:
-    image: louislam/uptime-kuma:2
+    image: hienhoceo-dpsmedia/uptime-kuma-vn:latest
     container_name: uptime-kuma
     restart: unless-stopped
     ports:

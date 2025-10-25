@@ -1,6 +1,6 @@
 services:
   uptime-kuma:
-    image: louislam/uptime-kuma:2
+    image: hienhoceo-dpsmedia/uptime-kuma-vn:latest
     restart: unless-stopped
     volumes:
       - ./data:/app/data
