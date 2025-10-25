@@ -80,7 +80,7 @@ You can easily deploy Uptime Kuma using Portainer's stack management with Git re
 
 5. **Repository Settings**:
    - **Repository URL**: `https://github.com/hienhoceo-dpsmedia/uptime-kuma-vn.git`
-   - **Repository reference**: `refs/heads/main`
+   - **Repository reference**: `refs/heads/master`
    - **Compose path**: `compose.yaml`
    - **Authentication**: Leave blank for public repository
 
@@ -92,6 +92,49 @@ You can easily deploy Uptime Kuma using Portainer's stack management with Git re
    - Choose your preferred access control settings
 
 8. **Deploy**: Click `Deploy the stack`
+
+> [!IMPORTANT]
+> If you encounter a "reference not found" error, try these solutions:
+> - Use `master` instead of `main` as the branch reference
+> - Try leaving the repository reference field empty (uses default branch)
+> - Use the Web Editor method below as an alternative
+
+#### Web Editor Method (Alternative)
+
+If the Git repository method doesn't work, you can use the Web Editor method:
+
+1. **Access Portainer**: Log in to your Portainer instance
+2. **Navigate to Stacks**: Go to `Stacks` in the left menu
+3. **Add Stack**: Click `Add stack` button
+4. **Create Stack Configuration**:
+   - **Name**: Enter a name for your stack (e.g., `uptime-kuma`)
+   - **Build method**: Select `Web editor`
+5. **Compose Configuration**: Copy and paste the following docker-compose configuration:
+
+```yaml
+version: '3.8'
+
+services:
+  uptime-kuma:
+    image: louislam/uptime-kuma:2
+    container_name: uptime-kuma
+    restart: unless-stopped
+    ports:
+      - "3001:3001"
+    volumes:
+      - uptime-kuma-data:/app/data
+    networks:
+      - uptime-kuma-network
+
+volumes:
+  uptime-kuma-data:
+
+networks:
+  uptime-kuma-network:
+    driver: bridge
+```
+
+6. **Deploy**: Click `Deploy the stack`
 
 #### What Happens Behind the Scenes
 
